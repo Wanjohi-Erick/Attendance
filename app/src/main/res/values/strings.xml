@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Attendance</string>
+    <string name="title_activity_take_attendance">TakeAttendance</string>
+    <string name="tab_text_1">ATTENDANCE</string>
+    <string name="tab_text_2">STUDENTS</string>
+    <string name="tab_text_3">HISTORY</string>
+</resources>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_height="match_parent"
+    tools:context=".NewUnit">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/unit_name"
+        android:hint="Unit Name"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginEnd="@dimen/margin"
+        android:inputType="textCapWords"
+        android:layout_marginBottom="@dimen/margin"
+        android:textSize="@dimen/text_size"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/academic_year"
+        android:hint="Academic Year"
+        android:inputType="number"
+        android:layout_margin="@dimen/margin"
+        android:textSize="@dimen/text_size"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/semester"
+        android:hint="Semester"
+        android:inputType="number"
+        android:layout_margin="@dimen/margin"
+        android:textSize="@dimen/text_size"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/attendance_expectation"
+        android:hint="Attendance Expectation"
+        android:inputType="number"
+        android:layout_margin="@dimen/margin"
+        android:textSize="@dimen/text_size"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_std_btn"
+        android:text="add students"
+        android:layout_margin="@dimen/margin"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/save_unit"
+        android:text="Finish"
+        android:padding="@dimen/margin"/>
+
+</LinearLayout>
