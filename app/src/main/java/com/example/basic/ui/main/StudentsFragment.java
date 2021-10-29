@@ -1,42 +1,65 @@
 package com.example.basic.ui.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.basic.R;
-import com.example.basic.adapters.StudentsAdapter;
-import com.example.basic.models.StudentsModel;
+import com.example.basic.room.AddNewUser;
+import com.example.basic.room.Student;
+import com.example.basic.room.StudentDatabase;
+import com.example.basic.room.StudentListAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class StudentsFragment extends Fragment {
-    RecyclerView students_recycler;
-    StudentsAdapter studentsAdapter;
-    List<StudentsModel> studentsList = new ArrayList<StudentsModel>();
+    StudentListAdapter studentListAdapter;
+    RecyclerView recyclerView;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_students, container, false);
-        String student_name, reg_no;
-        int attendance;
-        students_recycler = view.findViewById(R.id.students_recycler);
-         students_recycler.setHasFixedSize(true);
-        students_recycler.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        student_name = "Erick Wanjohi";
-        reg_no = "C026-01-0695/2020";
-        attendance = 66;
-        StudentsModel studentsModel = new StudentsModel(student_name, reg_no, attendance);
-        studentsList.add(studentsModel);
-        studentsAdapter = new StudentsAdapter(studentsList);
-        students_recycler.setAdapter(studentsAdapter);
+        //Button addUser = view.findViewById(R.id.addNewUserButton);
+        FloatingActionButton addUser = view.findViewById(R.id.addNewUserButton);
+        recyclerView = view.findViewById(R.id.recyclerView);
+        addUser.setOnClickListener(v -> {
+            startActivityForResult(new Intent(this.getActivity(), AddNewUser.class), 100);
+        });
 
+        initRecyclerView();
+        loadUserList();
         return view;
+    }
+
+    private void initRecyclerView() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), DividerItemDecoration.VERTICAL));
+        studentListAdapter = new StudentListAdapter(this.getContext());
+        recyclerView.setAdapter(studentListAdapter);
+    }
+
+    private void loadUserList() {
+        StudentDatabase db = StudentDatabase.getStudentDatabase(this.getContext());
+        List<Student> studentList = db.studentDao().getAllUsers();
+        studentListAdapter.setUserList(studentList);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+        if (requestCode == 100) {
+
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

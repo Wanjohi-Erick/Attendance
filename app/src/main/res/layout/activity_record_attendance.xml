@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:layout_height="match_parent"
-    tools:context=".ui.main.AttendanceFragment">
+    tools:context=".RecordAttendance">
 
-    <CalendarView
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/calendar"
-        android:layout_margin="@dimen/margin"/>
+        android:layout_margin="@dimen/margin"
+        android:id="@+id/take_attendance_recycler"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/take_attendance"
-        android:text="take attendance"/>
+        android:id="@+id/save_attendance_btn"
+        android:layout_margin="@dimen/margin"
+        android:text="Save Attendance"/>
+
 
 </LinearLayout>

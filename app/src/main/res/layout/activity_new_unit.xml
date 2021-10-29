@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/academic_year"
         android:hint="Academic Year"
-        android:inputType="number"
+        android:inputType="text"
         android:layout_margin="@dimen/margin"
         android:textSize="@dimen/text_size"/>
 
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/semester"
         android:hint="Semester"
-        android:inputType="number"
+        android:inputType="text"
         android:layout_margin="@dimen/margin"
         android:textSize="@dimen/text_size"/>
 
@@ -43,16 +43,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/attendance_expectation"
         android:hint="Attendance Expectation"
-        android:inputType="number"
+        android:inputType="text"
         android:layout_margin="@dimen/margin"
         android:textSize="@dimen/text_size"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/add_std_btn"
-        android:text="add students"
-        android:layout_margin="@dimen/margin"/>
 
     <Button
         android:layout_width="match_parent"

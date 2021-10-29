@@ -1,36 +1,35 @@
-package com.example.basic;
+package com.example.basic.room;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.basic.room.AppDatabase;
-import com.example.basic.room.User;
+import com.example.basic.R;
 
 public class AddNewUser extends AppCompatActivity {
-    EditText first, last;
+    EditText student_name, reg_no;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_user);
 
-        first = findViewById(R.id.first_name);
-        last = findViewById(R.id.last_name);
+        student_name = findViewById(R.id.student_name_edit);
+        reg_no = findViewById(R.id.reg_no_edit);
         Button save = findViewById(R.id.save);
         save.setOnClickListener(v -> {
-            saveNewUser(first.getText().toString(), last.getText().toString());
+            saveNewUser(student_name.getText().toString(), reg_no.getText().toString());
         });
     }
 
     private void saveNewUser(String firstName, String lastName) {
-        AppDatabase db = AppDatabase.getDbInstance(this.getApplicationContext());
+        StudentDatabase db = StudentDatabase.getStudentDatabase(this.getApplicationContext());
 
-        User user = new User();
-        user.firstName = firstName;
-        user.lastName = lastName;
-        db.userDao().insertUser(user);
+        Student student = new Student();
+        student.student_name = firstName;
+        student.reg_no = lastName;
+        db.studentDao().insertUser(student);
 
         finish();
     }

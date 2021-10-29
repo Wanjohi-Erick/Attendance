@@ -1,5 +1,6 @@
 package com.example.basic.adapters;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,13 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.basic.R;
 import com.example.basic.TakeAttendance;
-import com.example.basic.models.UnitsModel;
+import com.example.basic.room.Units;
 
 import java.util.List;
 
 public class UnitsAdapter extends RecyclerView.Adapter<UnitsAdapter.MyViewHolder> {
-    List<UnitsModel> unitsList;
-    public UnitsAdapter(List<UnitsModel> unitsList) {
+    List<Units> unitsList;
+    Context context;
+    public UnitsAdapter(Context context) {
+        this.context = context;
+    }
+
+    public void setUnitsList(List<Units> unitsList) {
         this.unitsList = unitsList;
     }
 
@@ -30,14 +36,18 @@ public class UnitsAdapter extends RecyclerView.Adapter<UnitsAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull UnitsAdapter.MyViewHolder holder, int position) {
-        String unit_name, academic_year, semester;
-        unit_name = unitsList.get(position).getUnit_name();
-        academic_year = unitsList.get(position).getAcademic_year();
-        semester = unitsList.get(position).getSemester();
-        holder.unit_name.setText(unitsList.get(position).getUnit_name());
+        String unit_name, academic_year, semester, number_of_classes_learnt;
+        unit_name = unitsList.get(position).unit_name;
+        academic_year = unitsList.get(position).academic_year;
+        semester = unitsList.get(position).semester;
+        number_of_classes_learnt = unitsList.get(position).number_of_classes;
+        holder.unit_name.setText(unit_name);
+        holder.academicYear.setText(academic_year);
+        holder.semester.setText(semester);
+        holder.number_of_classes_learnt.setText(number_of_classes_learnt);
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(holder.itemView.getContext(), TakeAttendance.class);
-            String title = unitsList.get(position).getUnit_name() + " (" + semester + "-" + academic_year + ")";
+            String title = unit_name + " (" + semester + "-" + academic_year + ")";
             intent.putExtra("Title", title);
             holder.itemView.getContext().startActivity(intent);
         });
@@ -49,10 +59,13 @@ public class UnitsAdapter extends RecyclerView.Adapter<UnitsAdapter.MyViewHolder
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView unit_name;
+        TextView unit_name, academicYear, semester, number_of_classes_learnt;
         public MyViewHolder(View itemView) {
             super(itemView);
             unit_name = itemView.findViewById(R.id.unit_name);
+            academicYear = itemView.findViewById(R.id.academic_year);
+            semester = itemView.findViewById(R.id.semester);
+            number_of_classes_learnt = itemView.findViewById(R.id.number_of_classes);
         }
     }
 }

@@ -1,6 +1,5 @@
 package com.example.basic.room;
 
-
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -9,14 +8,13 @@ import androidx.room.Query;
 import java.util.List;
 
 @Dao
-public interface UserDao {
-
-    @Query("SELECT * FROM user")
-    List<User> getAllUsers();
+public interface UnitsDAO {
+    @Query("SELECT * FROM units")
+    List<Units> getAllUnits();
 
     @Insert
-    void insertUser(User... users);
+    void insertUnit(Units... units);
 
     @Delete
-    void delete(User user);
+    void delete(Units units);
 }

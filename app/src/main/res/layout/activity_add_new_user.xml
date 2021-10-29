@@ -7,20 +7,22 @@
     android:orientation="vertical"
     android:gravity="center"
     android:layout_height="match_parent"
-    tools:context=".AddNewUser">
+    tools:context=".room.AddNewUser">
 
   <EditText
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:id="@+id/first_name"
-      android:hint="Enter first name"
+      android:id="@+id/student_name_edit"
+      android:inputType="textCapWords"
+      android:hint="Enter Student's Name"
       android:textSize="@dimen/text_size"/>
 
   <EditText
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:id="@+id/last_name"
-      android:hint="enter last name"
+      android:id="@+id/reg_no_edit"
+      android:inputType="textCapWords"
+      android:hint="Wnter Registration/ Toll Number"
       android:textSize="@dimen/text_size"/>
 
   <Button
