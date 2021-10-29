@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.basic.adapters.AttendanceSelectAdapter;
+import com.example.basic.room.AttendanceDatabase;
 import com.example.basic.room.Student;
 import com.example.basic.room.StudentDatabase;
 
@@ -24,6 +26,8 @@ public class RecordAttendance extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record_attendance);
+        Bundle bundle = getIntent().getExtras();
+        String date = bundle.getString("Date");
 
         recyclerView = findViewById(R.id.take_attendance_recycler);
         saveAttendance = findViewById(R.id.save_attendance_btn);

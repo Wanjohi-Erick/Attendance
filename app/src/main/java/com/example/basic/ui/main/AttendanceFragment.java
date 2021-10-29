@@ -14,17 +14,27 @@ import androidx.fragment.app.Fragment;
 import com.example.basic.R;
 import com.example.basic.RecordAttendance;
 
+import java.util.Date;
+
 
 public class AttendanceFragment extends Fragment {
     CalendarView calendarView;
     Button takeAttendance;
+    public Date dateDate;
+    public String date;
+    public long instance;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_take_attendance, container, false);
-        calendarView = view.findViewById(R.id.calendar);
         takeAttendance = view.findViewById(R.id.take_attendance);
+        calendarView = view.findViewById(R.id.calendar);
         takeAttendance.setOnClickListener(v -> {
-            startActivity(new Intent(this.getActivity(), RecordAttendance.class));
+            instance = calendarView.getDate();
+            dateDate = new Date(instance);
+            date = String.valueOf(dateDate);
+            Intent intent = new Intent(this.getActivity(), RecordAttendance.class);
+            intent.putExtra("Date", date);
+            startActivity(intent);
         });
 
         return view;

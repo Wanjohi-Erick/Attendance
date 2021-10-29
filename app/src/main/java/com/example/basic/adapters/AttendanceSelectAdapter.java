@@ -7,15 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.basic.R;
+import com.example.basic.RecordAttendance;
 import com.example.basic.room.Student;
+import com.example.basic.ui.main.AttendanceFragment;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Date;
 import java.util.List;
 
 public class AttendanceSelectAdapter extends RecyclerView.Adapter<AttendanceSelectAdapter.MyViewHolder> {
@@ -44,7 +48,7 @@ public class AttendanceSelectAdapter extends RecyclerView.Adapter<AttendanceSele
         holder.attendanceState.setOnClickListener(v -> {
             if (holder.attendanceState.getText().toString().equalsIgnoreCase("P")) {
                 holder.attendanceState.setText("A");
-                holder.attendanceState.setBackgroundColor(Color.rgb(255, 0, 0));
+                holder.attendanceState.setBackgroundColor(Color.rgb(243, 32, 19));
             } else {
                 holder.attendanceState.setText("P");
                 holder.attendanceState.setBackgroundColor(Color.rgb(0, 0, 255));
