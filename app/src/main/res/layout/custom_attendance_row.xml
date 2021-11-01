@@ -31,16 +31,11 @@
 
     </LinearLayout>
 
-    <TextView
+    <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/attendance_state"
         android:layout_gravity="center"
-        android:layout_marginStart="@dimen/margin"
-        android:textSize="40sp"
-        android:text="P"
-        android:paddingStart="17dp"
-        android:paddingEnd="17dp"
-        android:background="@color/design_default_color_primary"
-        android:id="@+id/attendance_state"/>
+        android:layout_weight="1"/>
 
 </LinearLayout>

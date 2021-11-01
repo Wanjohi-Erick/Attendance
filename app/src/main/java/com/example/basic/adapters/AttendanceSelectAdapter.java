@@ -1,11 +1,11 @@
 package com.example.basic.adapters;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,18 +13,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.basic.R;
-import com.example.basic.RecordAttendance;
 import com.example.basic.room.Student;
-import com.example.basic.ui.main.AttendanceFragment;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AttendanceSelectAdapter extends RecyclerView.Adapter<AttendanceSelectAdapter.MyViewHolder> {
     Context context;
     List<Student> studentList;
+    String displayText;
+    List<Student> checkedItems = new ArrayList<>();
+    boolean isCheckedBool;
     public AttendanceSelectAdapter(Context context) {
         this.context = context;
     }
@@ -45,15 +46,16 @@ public class AttendanceSelectAdapter extends RecyclerView.Adapter<AttendanceSele
     public void onBindViewHolder(@NonNull @NotNull MyViewHolder holder, int position) {
         holder.studentName.setText(studentList.get(position).student_name);
         holder.regNo.setText(studentList.get(position).reg_no);
-        holder.attendanceState.setOnClickListener(v -> {
-            if (holder.attendanceState.getText().toString().equalsIgnoreCase("P")) {
-                holder.attendanceState.setText("A");
-                holder.attendanceState.setBackgroundColor(Color.rgb(243, 32, 19));
-            } else {
-                holder.attendanceState.setText("P");
-                holder.attendanceState.setBackgroundColor(Color.rgb(0, 0, 255));
+        holder.attendanceState.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            isCheckedBool = isChecked;
+            if (isChecked) {
+                checkedItems.add(studentList.get(position));
             }
         });
+    }
+
+    public List<Student> getCheckedItems() {
+        return checkedItems;
     }
 
     @Override
@@ -62,7 +64,8 @@ public class AttendanceSelectAdapter extends RecyclerView.Adapter<AttendanceSele
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView studentName, regNo, attendanceState;
+        TextView studentName, regNo;
+        CheckBox attendanceState;
         public MyViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             studentName = itemView.findViewById(R.id.student_name);

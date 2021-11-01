@@ -1,13 +1,11 @@
 package com.example.basic.room;
 
-import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "attendance")
 public class AttendanceModel {
-    @NonNull
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "uid")
     public int uid;
