@@ -8,6 +8,7 @@ import androidx.room.RoomDatabase;
 
 @Database(entities = AttendanceModel.class, version = 1)
 public abstract class AttendanceDatabase extends RoomDatabase {
+    public abstract AttendanceDao attendanceDao();
     public static AttendanceDatabase attendanceDatabase;
     public static AttendanceDatabase getAttendanceDatabase(Context context) {
         if (attendanceDatabase == null) {

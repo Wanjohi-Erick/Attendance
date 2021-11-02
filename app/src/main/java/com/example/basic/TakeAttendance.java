@@ -2,33 +2,40 @@ package com.example.basic;
 
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.basic.databinding.ActivityTakeAttendanceBinding;
 import com.example.basic.ui.main.SectionsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class TakeAttendance extends AppCompatActivity {
-
-    private ActivityTakeAttendanceBinding binding;
-
+    TextView titleView;
+    String title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityTakeAttendanceBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_take_attendance);
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
-        ViewPager viewPager = binding.viewPager;
+        ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
-        TabLayout tabs = binding.tabs;
+        TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-        TextView title = binding.title;
+        titleView = findViewById(R.id.title);
+        getBundle();
+    }
 
+    private void getBundle() {
         Bundle bundle = getIntent().getExtras();
-        title.setText(bundle.getString("Title"));
+        title = bundle.getString("Title");
+        titleView.setText(title);
+        title();
+    }
+
+    public String title() {
+        return title;
     }
 }

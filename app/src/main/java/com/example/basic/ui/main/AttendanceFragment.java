@@ -28,12 +28,15 @@ public class AttendanceFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_take_attendance, container, false);
         takeAttendance = view.findViewById(R.id.take_attendance);
         calendarView = view.findViewById(R.id.calendar);
+        Bundle bundle = requireActivity().getIntent().getExtras();
+        String title = bundle.getString("Title");
         takeAttendance.setOnClickListener(v -> {
             instance = calendarView.getDate();
             dateDate = new Date(instance);
             date = String.valueOf(dateDate);
             Intent intent = new Intent(this.getActivity(), RecordAttendance.class);
             intent.putExtra("Date", date);
+            intent.putExtra("Title", title);
             startActivity(intent);
         });
 
