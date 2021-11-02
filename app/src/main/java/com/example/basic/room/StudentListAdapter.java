@@ -17,10 +17,9 @@ import java.util.List;
 
 public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.MyViewHolder> {
 
-    private Context context;
     private List<Student> studentList;
+
     public StudentListAdapter(Context context) {
-        this.context = context;
     }
 
     public void setUserList(List<Student> studentList) {
@@ -41,6 +40,11 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
         holder.studentName.setText(studentList.get(position).student_name);
         holder.reg_no.setText(studentList.get(position).reg_no);
         holder.percentage_attendance.setText(studentList.get(position).attendance);
+        holder.itemView.setOnLongClickListener(v -> {
+            studentList.remove(position);
+            notifyDataSetChanged();
+            return false;
+        });
     }
 
     @Override
@@ -48,7 +52,7 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
         return studentList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView studentName, reg_no, percentage_attendance;
         public MyViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);

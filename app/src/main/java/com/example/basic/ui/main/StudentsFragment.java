@@ -3,6 +3,9 @@ package com.example.basic.ui.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -20,6 +23,8 @@ import com.example.basic.room.StudentDatabase;
 import com.example.basic.room.StudentListAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class StudentsFragment extends Fragment {
@@ -29,7 +34,6 @@ public class StudentsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_students, container, false);
-        //Button addUser = view.findViewById(R.id.addNewUserButton);
         FloatingActionButton addUser = view.findViewById(R.id.addNewUserButton);
         recyclerView = view.findViewById(R.id.recyclerView);
         addUser.setOnClickListener(v -> {
@@ -43,7 +47,6 @@ public class StudentsFragment extends Fragment {
 
     private void initRecyclerView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        recyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(), DividerItemDecoration.VERTICAL));
         studentListAdapter = new StudentListAdapter(this.getContext());
         recyclerView.setAdapter(studentListAdapter);
     }
@@ -56,10 +59,8 @@ public class StudentsFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
-        if (requestCode == 100) {
-
-        }
-
         super.onActivityResult(requestCode, resultCode, data);
+
+        requireActivity().recreate();
     }
 }

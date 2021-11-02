@@ -32,6 +32,7 @@ public class AttendanceSelectAdapter extends RecyclerView.Adapter<AttendanceSele
 
     public void setStudentList(List<Student> studentList) {
         this.studentList = studentList;
+        notifyDataSetChanged();
     }
 
     @NonNull

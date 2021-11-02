@@ -15,12 +15,14 @@ import com.example.basic.adapters.HistoryAdapter;
 import com.example.basic.room.AttendanceDatabase;
 import com.example.basic.room.AttendanceModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryFragment extends Fragment {
     RecyclerView recyclerView;
     HistoryAdapter historyAdapter;
     List<AttendanceModel> attendanceList;
+    String title;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_history, container, false);
@@ -30,6 +32,8 @@ public class HistoryFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(historyAdapter);
+        Bundle bundle = requireActivity().getIntent().getExtras();
+        title = bundle.getString("Title");
 
         loadHistory();
 
@@ -38,7 +42,8 @@ public class HistoryFragment extends Fragment {
 
     private void loadHistory() {
         AttendanceDatabase attendanceDatabase = AttendanceDatabase.getAttendanceDatabase(this.getContext());
-        attendanceList = attendanceDatabase.attendanceDao().getAllAttendance();
+        attendanceList = attendanceDatabase.attendanceDao().getAllAttendance(title);
         historyAdapter.setAttendanceList(attendanceList);
+
     }
 }

@@ -25,6 +25,7 @@ public class UnitsAdapter extends RecyclerView.Adapter<UnitsAdapter.MyViewHolder
 
     public void setUnitsList(List<Units> unitsList) {
         this.unitsList = unitsList;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -48,6 +49,7 @@ public class UnitsAdapter extends RecyclerView.Adapter<UnitsAdapter.MyViewHolder
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(holder.itemView.getContext(), TakeAttendance.class);
             String title = unit_name + " (" + semester + "-" + academic_year + ")";
+            intent.putExtra("Unit Name", unit_name);
             intent.putExtra("Title", title);
             holder.itemView.getContext().startActivity(intent);
         });

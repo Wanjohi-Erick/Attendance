@@ -10,8 +10,8 @@ import java.util.List;
 
 @Dao
 public interface AttendanceDao {
-    @Query("SELECT * FROM attendance")
-    List<AttendanceModel> getAllAttendance();
+    @Query("SELECT * FROM attendance WHERE unit_name = :unit_name")
+    List<AttendanceModel> getAllAttendance(String unit_name);
 
     @Insert
     void insertAttendance(AttendanceModel... attendanceModel);

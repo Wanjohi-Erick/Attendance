@@ -1,20 +1,16 @@
 package com.example.basic;
 
-import androidx.annotation.NonNull;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.Layout;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.basic.adapters.AttendanceSelectAdapter;
-import com.example.basic.models.AttendanceStateModel;
 import com.example.basic.room.AttendanceDatabase;
 import com.example.basic.room.AttendanceModel;
 import com.example.basic.room.Student;
@@ -22,7 +18,6 @@ import com.example.basic.room.StudentDatabase;
 import com.example.basic.ui.main.AttendanceFragment;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -63,7 +58,6 @@ public class RecordAttendance extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         if (v == findViewById(R.id.save_attendance_btn)) {
             List<Student> studentsPresent = ((AttendanceSelectAdapter) Objects.requireNonNull(recyclerView.getAdapter())).getCheckedItems();
-            Toast.makeText(this, "Size: " + studentsPresent.size(), Toast.LENGTH_SHORT).show();
             String student_name, reg_no, attendance_state, attendance_count;
             for (int i = 0; i < studentsPresent.size(); i++) {
                 student_name = studentsPresent.get(i).student_name;
@@ -72,8 +66,7 @@ public class RecordAttendance extends AppCompatActivity implements View.OnClickL
                 attendance_count = "1";
                 saveToDatabase(unit_name, date, student_name, reg_no, attendance_state, attendance_count);
             }
-            startActivity(new Intent(this.getApplicationContext(), AttendanceFragment.class));
-            finish();
+
         }
     }
 
@@ -88,5 +81,7 @@ public class RecordAttendance extends AppCompatActivity implements View.OnClickL
         attendance.attendance_count = attendance_count;
 
         attendanceDatabase.attendanceDao().insertAttendance(attendance);
+
+        finish();
     }
 }

@@ -23,8 +23,6 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView unitsRecycler;
     UnitsAdapter unitsAdapter;
     List<Units> unitsList = new ArrayList<>();
-    String unit_name, academic_year, semester;
-    int number_of_classes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,27 +42,17 @@ public class MainActivity extends AppCompatActivity {
         unitsRecycler.setHasFixedSize(true);
         unitsRecycler.setLayoutManager(new LinearLayoutManager(this));
 
-        //unitsList.add("Data Structures and Algorithms");
-        //unitsList.add("Operating Systems");
-        //unitsList.add("Database Systems");
-
         UnitsDatabase unitsDatabase = UnitsDatabase.getUnitsDatabase(this);
         unitsList = unitsDatabase.unitsDAO().getAllUnits();
         unitsAdapter = new UnitsAdapter(this);
         unitsAdapter.setUnitsList(unitsList);
         unitsRecycler.setAdapter(unitsAdapter);
-        /*
-        UnitsModel unitsModel = new UnitsModel(unit_name, academic_year, semester, number_of_classes);
-        unitsModel.setUnit_name("Database Systems");
-        unitsModel.setAcademic_year("2021/2022");
-        unitsModel.setNumber_of_classes(10);
-        unitsModel.setSemester("2.1");
-
-         */
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        recreate();
     }
 }

@@ -12,7 +12,7 @@ import com.google.android.material.tabs.TabLayout;
 
 public class TakeAttendance extends AppCompatActivity {
     TextView titleView;
-    String title;
+    String title, unit_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +31,16 @@ public class TakeAttendance extends AppCompatActivity {
     private void getBundle() {
         Bundle bundle = getIntent().getExtras();
         title = bundle.getString("Title");
+        unit_name = bundle.getString("Unit Name");
         titleView.setText(title);
         title();
+        unitName();
     }
 
     public String title() {
         return title;
+    }
+    public String unitName() {
+        return unit_name;
     }
 }
