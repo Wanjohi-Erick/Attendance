@@ -24,4 +24,7 @@ public interface AttendanceDao {
 
     @Update
     void update(AttendanceModel attendanceModel);
+
+    @Query("SELECT * FROM attendance WHERE date = :date")
+    List<AttendanceModel> select(String date);
 }

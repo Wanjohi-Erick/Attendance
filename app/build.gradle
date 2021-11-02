@@ -62,4 +62,6 @@ dependencies {
     // optional - Paging 3 Integration
     implementation "androidx.room:room-paging:2.4.0-beta01"
 
+    implementation 'com.squareup:android-times-square:1.6.5@aar'
+
 }

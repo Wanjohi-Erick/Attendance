@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.example.basic.room.AttendanceDatabase;
 import com.example.basic.room.AttendanceModel;
 import com.example.basic.room.Student;
 import com.example.basic.room.StudentDatabase;
+import com.example.basic.ui.main.AttendanceFragment;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -38,7 +40,7 @@ public class RecordAttendance extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record_attendance);
         Bundle bundle = getIntent().getExtras();
-        date = Calendar.getInstance().getTime();
+        date = new Date(bundle.getString("Date"));
         unit_name = bundle.getString("Title");
 
         recyclerView = findViewById(R.id.take_attendance_recycler);
@@ -70,6 +72,8 @@ public class RecordAttendance extends AppCompatActivity implements View.OnClickL
                 attendance_count = "1";
                 saveToDatabase(unit_name, date, student_name, reg_no, attendance_state, attendance_count);
             }
+            startActivity(new Intent(this.getApplicationContext(), AttendanceFragment.class));
+            finish();
         }
     }
 
