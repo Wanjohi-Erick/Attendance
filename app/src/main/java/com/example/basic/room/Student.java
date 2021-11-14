@@ -11,11 +11,18 @@ public class Student {
     @PrimaryKey(autoGenerate = true)
     public int uid;
 
-    @ColumnInfo(name = "student_name")
-    public String student_name;
-    @ColumnInfo(name = "reg_no")
-    public String reg_no;
+    @ColumnInfo(name = "first_name")
+    public String first_name;
+    @ColumnInfo(name = "last_name")
+    public String last_name;
+    @ColumnInfo(name = "phone")
+    public String phone;
+    @ColumnInfo(name = "email")
+    public String email;
+    @ColumnInfo(name = "program")
+    public String program;
+    @ColumnInfo(name = "semester")
+    public String semester;
     @ColumnInfo(name = "attendance")
     public String attendance;
-
 }

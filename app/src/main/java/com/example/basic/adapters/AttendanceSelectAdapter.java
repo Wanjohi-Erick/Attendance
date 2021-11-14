@@ -5,9 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -45,8 +43,8 @@ public class AttendanceSelectAdapter extends RecyclerView.Adapter<AttendanceSele
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull MyViewHolder holder, int position) {
-        holder.studentName.setText(studentList.get(position).student_name);
-        holder.regNo.setText(studentList.get(position).reg_no);
+        holder.studentName.setText(studentList.get(position).first_name);
+        holder.regNo.setText(studentList.get(position).last_name);
         holder.attendanceState.setOnCheckedChangeListener((buttonView, isChecked) -> {
             isCheckedBool = isChecked;
             if (isChecked) {

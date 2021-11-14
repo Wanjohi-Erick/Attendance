@@ -41,7 +41,7 @@ public class AttendanceFragment extends Fragment {
         calendarView = view.findViewById(R.id.calendar);
         Bundle bundle = requireActivity().getIntent().getExtras();
         title = bundle.getString("Title");
-        unit_name = bundle.getString("Unit Name");
+        //unit_name = bundle.getString("Unit Name");
         today = new Date();
         Calendar nextYear = Calendar.getInstance();
         nextYear.add(Calendar.YEAR, 1);

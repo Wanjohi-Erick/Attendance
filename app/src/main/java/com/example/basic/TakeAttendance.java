@@ -30,8 +30,8 @@ public class TakeAttendance extends AppCompatActivity {
 
     private void getBundle() {
         Bundle bundle = getIntent().getExtras();
-        title = bundle.getString("Title");
-        unit_name = bundle.getString("Unit Name");
+        title = bundle.getString("title");
+        //unit_name = bundle.getString("Unit Name");
         titleView.setText(title);
         title();
         unitName();

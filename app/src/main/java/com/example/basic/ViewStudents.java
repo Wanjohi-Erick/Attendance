@@ -44,7 +44,7 @@ public class ViewStudents extends AppCompatActivity {
 
     private void loadUserList() {
         StudentDatabase db = StudentDatabase.getStudentDatabase(this);
-        List<Student> studentList = db.studentDao().getAllUsers();
+        List<Student> studentList = db.studentDao().getAllStudents();
         studentListAdapter.setUserList(studentList);
     }
 

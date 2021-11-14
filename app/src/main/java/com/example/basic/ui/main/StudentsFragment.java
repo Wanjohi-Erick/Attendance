@@ -47,7 +47,7 @@ public class StudentsFragment extends Fragment {
 
     private void loadUserList() {
         StudentDatabase db = StudentDatabase.getStudentDatabase(this.getContext());
-        List<Student> studentList = db.studentDao().getAllUsers();
+        List<Student> studentList = db.studentDao().getAllStudents();
         studentListAdapter.setUserList(studentList);
     }
 

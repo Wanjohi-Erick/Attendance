@@ -12,7 +12,7 @@ import java.util.List;
 public interface StudentDao {
 
     @Query("SELECT * FROM Student")
-    List<Student> getAllUsers();
+    List<Student> getAllStudents();
 
     @Insert
     void insertUser(Student... students);

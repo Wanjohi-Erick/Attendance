@@ -1,6 +1,7 @@
 package com.example.basic.room;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.basic.R;
+import com.example.basic.TakeAttendance;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -37,13 +39,17 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull MyViewHolder holder, int position) {
-        holder.studentName.setText(studentList.get(position).student_name);
-        holder.reg_no.setText(studentList.get(position).reg_no);
-        holder.percentage_attendance.setText(studentList.get(position).attendance);
-        holder.itemView.setOnLongClickListener(v -> {
-            studentList.remove(position);
-            notifyDataSetChanged();
-            return false;
+        String first_name, last_name;
+        first_name = String.format("%s,", studentList.get(position).first_name);
+        last_name = studentList.get(position).last_name;
+        holder.studentName.setText(first_name);
+        holder.reg_no.setText(last_name);
+        //holder.percentage_attendance.setText(studentList.get(position).attendance);
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), TakeAttendance.class);
+            String title = first_name + last_name;
+            intent.putExtra("title", title);
+            holder.itemView.getContext().startActivity(intent);
         });
     }
 
@@ -53,12 +59,11 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView studentName, reg_no, percentage_attendance;
+        TextView studentName, reg_no;
         public MyViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             studentName = itemView.findViewById(R.id.student_name);
             reg_no = itemView.findViewById(R.id.reg_no);
-            percentage_attendance = itemView.findViewById(R.id.percentage_attendance);
         }
     }
 }

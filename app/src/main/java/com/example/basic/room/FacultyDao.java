@@ -10,8 +10,11 @@ import java.util.List;
 
 @Dao
 public interface FacultyDao {
-    @Query("SELECT * FROM facultyTable WHERE username = :username")
-    List<AttendanceModel> getAllFaculty(String username);
+    @Query("SELECT * FROM facultyTable")
+    List<Faculty> getAllFaculty();
+
+    @Query("Select * FROM facultyTable WHERE username =:username")
+    List<Faculty> getUser(String username);
 
     @Insert
     void insertFaculty(Faculty... faculty);

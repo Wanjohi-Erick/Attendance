@@ -1,10 +1,8 @@
 package com.example.basic;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,7 +13,6 @@ import com.example.basic.room.AttendanceDatabase;
 import com.example.basic.room.AttendanceModel;
 import com.example.basic.room.Student;
 import com.example.basic.room.StudentDatabase;
-import com.example.basic.ui.main.AttendanceFragment;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -46,7 +43,7 @@ public class RecordAttendance extends AppCompatActivity implements View.OnClickL
         attendanceSelectAdapter = new AttendanceSelectAdapter(this);
 
         StudentDatabase studentDatabase = StudentDatabase.getStudentDatabase(this);
-        studentList = studentDatabase.studentDao().getAllUsers();
+        studentList = studentDatabase.studentDao().getAllStudents();
         attendanceSelectAdapter.setStudentList(studentList);
 
         recyclerView.setAdapter(attendanceSelectAdapter);
@@ -60,8 +57,8 @@ public class RecordAttendance extends AppCompatActivity implements View.OnClickL
             List<Student> studentsPresent = ((AttendanceSelectAdapter) Objects.requireNonNull(recyclerView.getAdapter())).getCheckedItems();
             String student_name, reg_no, attendance_state, attendance_count;
             for (int i = 0; i < studentsPresent.size(); i++) {
-                student_name = studentsPresent.get(i).student_name;
-                reg_no = studentsPresent.get(i).reg_no;
+                student_name = studentsPresent.get(i).first_name;
+                reg_no = studentsPresent.get(i).last_name;
                 attendance_state = studentsPresent.get(i).attendance;
                 attendance_count = "1";
                 saveToDatabase(unit_name, date, student_name, reg_no, attendance_state, attendance_count);

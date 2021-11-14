@@ -14,6 +14,8 @@ import com.example.basic.R;
 import com.example.basic.TakeAttendance;
 import com.example.basic.room.Units;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class UnitsAdapter extends RecyclerView.Adapter<UnitsAdapter.MyViewHolder> {
@@ -28,6 +30,7 @@ public class UnitsAdapter extends RecyclerView.Adapter<UnitsAdapter.MyViewHolder
         notifyDataSetChanged();
     }
 
+    @NotNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_units_row, parent, false);

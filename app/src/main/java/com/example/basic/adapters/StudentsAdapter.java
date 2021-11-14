@@ -31,7 +31,6 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
     public void onBindViewHolder(@NotNull MyViewHolder holder, int position) {
         holder.stud_name.setText(studentsList.get(position).getStudent_name());
         holder.reg_no.setText(studentsList.get(position).getReg_no());
-        holder.attendance_percentage.setText(String.valueOf(studentsList.get(position).getAttendance()));
     }
 
     @Override
@@ -40,12 +39,11 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView stud_name, reg_no, attendance_percentage;
+        TextView stud_name, reg_no;
         public MyViewHolder(@NotNull View itemView) {
             super(itemView);
             stud_name = itemView.findViewById(R.id.student_name);
             reg_no = itemView.findViewById(R.id.reg_no);
-            attendance_percentage = itemView.findViewById(R.id.percentage_attendance);
         }
     }
 }
