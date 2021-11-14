@@ -9,18 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Basic">
-        <activity android:name=".DayHistory">
-
-        </activity>
-        <activity android:name=".RecordAttendance" />
-        <activity android:name=".room.AddNewUser" />
+        <activity android:name=".ViewFaculty" android:parentActivityName=".FacultyPanel"/>
+        <activity android:name=".AddFaculty" android:parentActivityName=".FacultyPanel"/>
+        <activity android:name=".ViewAttendance" android:parentActivityName=".FacultyPanel"/>
+        <activity android:name=".ViewStudents" android:parentActivityName=".FacultyPanel" />
+        <activity android:name=".FacultyPanel" />
         <activity
-            android:name=".TakeAttendance"
-            android:label="@string/title_activity_take_attendance"
-            android:theme="@style/Theme.Basic.NoActionBar" />
-        <activity android:name=".NewUnit" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,6 +23,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".DayHistory" />
+        <activity android:name=".RecordAttendance" />
+        <activity android:name=".room.addNewStudent" android:parentActivityName=".FacultyPanel"/>
+        <activity
+            android:name=".TakeAttendance"
+            android:label="@string/title_activity_take_attendance"
+            android:theme="@style/Theme.Basic.NoActionBar" />
+        <activity android:name=".NewUnit" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

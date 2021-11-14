@@ -7,7 +7,9 @@ import android.widget.EditText;
 
 import com.example.basic.R;
 
-public class AddNewUser extends AppCompatActivity {
+import java.util.Objects;
+
+public class addNewStudent extends AppCompatActivity {
     EditText student_name, reg_no;
 
     @Override
@@ -18,9 +20,8 @@ public class AddNewUser extends AppCompatActivity {
         student_name = findViewById(R.id.student_name_edit);
         reg_no = findViewById(R.id.reg_no_edit);
         Button save = findViewById(R.id.save);
-        save.setOnClickListener(v -> {
-            saveNewUser(student_name.getText().toString(), reg_no.getText().toString());
-        });
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        save.setOnClickListener(v -> saveNewUser(student_name.getText().toString(), reg_no.getText().toString()));
     }
 
     private void saveNewUser(String firstName, String lastName) {

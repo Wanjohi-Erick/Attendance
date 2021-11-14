@@ -1,17 +1,15 @@
 package com.example.basic;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.basic.adapters.UnitsAdapter;
-import com.example.basic.models.UnitsModel;
 import com.example.basic.room.Units;
 import com.example.basic.room.UnitsDatabase;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -29,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         ActionBar toolbar = getSupportActionBar();
         assert toolbar != null;
         toolbar.setTitle("Units");

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:layout_height="match_parent"
-    tools:context=".room.AddNewUser">
+    tools:context=".room.addNewStudent">
 
   <EditText
       android:layout_width="match_parent"
@@ -22,7 +22,7 @@
       android:layout_height="wrap_content"
       android:id="@+id/reg_no_edit"
       android:inputType="textCapWords"
-      android:hint="Wnter Registration/ Toll Number"
+      android:hint="Enter Registration/ Toll Number"
       android:textSize="@dimen/text_size"/>
 
   <Button

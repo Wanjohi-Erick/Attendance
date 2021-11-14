@@ -3,27 +3,21 @@ package com.example.basic.ui.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.basic.R;
-import com.example.basic.room.AddNewUser;
+import com.example.basic.room.addNewStudent;
 import com.example.basic.room.Student;
 import com.example.basic.room.StudentDatabase;
 import com.example.basic.room.StudentListAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -37,7 +31,7 @@ public class StudentsFragment extends Fragment {
         FloatingActionButton addUser = view.findViewById(R.id.addNewUserButton);
         recyclerView = view.findViewById(R.id.recyclerView);
         addUser.setOnClickListener(v -> {
-            startActivityForResult(new Intent(this.getActivity(), AddNewUser.class), 100);
+            startActivityForResult(new Intent(this.getActivity(), addNewStudent.class), 100);
         });
 
         initRecyclerView();

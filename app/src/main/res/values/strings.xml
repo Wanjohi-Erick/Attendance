@@ -4,4 +4,13 @@
     <string name="tab_text_1">ATTENDANCE</string>
     <string name="tab_text_2">STUDENTS</string>
     <string name="tab_text_3">HISTORY</string>
+    <string name="login">Login</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="phone">Phone</string>
+    <string name="address">Address</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="cancel">Cancel</string>
+    <string name="submit">Submit</string>
 </resources>
