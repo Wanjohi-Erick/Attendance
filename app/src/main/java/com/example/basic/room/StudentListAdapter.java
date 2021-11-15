@@ -20,8 +20,10 @@ import java.util.List;
 public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.MyViewHolder> {
 
     private List<Student> studentList;
+    Context context;
 
     public StudentListAdapter(Context context) {
+        this.context = context;
     }
 
     public void setUserList(List<Student> studentList) {
@@ -45,12 +47,12 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
         holder.studentName.setText(first_name);
         holder.reg_no.setText(last_name);
         //holder.percentage_attendance.setText(studentList.get(position).attendance);
-        holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(v.getContext(), TakeAttendance.class);
-            String title = first_name + last_name;
-            intent.putExtra("title", title);
-            holder.itemView.getContext().startActivity(intent);
-        });
+        //holder.itemView.setOnClickListener(v -> {
+            //Intent intent = new Intent(v.getContext(), TakeAttendance.class);
+            //String title = first_name + last_name;
+            //intent.putExtra("title", title);
+            //holder.itemView.getContext().startActivity(intent);
+        //});
     }
 
     @Override

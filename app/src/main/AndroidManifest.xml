@@ -31,7 +31,8 @@
             android:label="@string/title_activity_take_attendance"
             android:theme="@style/Theme.Basic.NoActionBar" />
         <activity android:name=".NewUnit" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:parentActivityName=".FacultyPanel"/>
     </application>
 
 </manifest>

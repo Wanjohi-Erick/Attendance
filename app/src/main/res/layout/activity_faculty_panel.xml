@@ -16,15 +16,15 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/add_student"
-            android:text="Add Student"
+            android:id="@+id/view_add_student"
+            android:text="View/Add Students"
             android:layout_margin="@dimen/margin"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/view_students"
-            android:text="View Students"
+            android:id="@+id/view_add_units"
+            android:text="View/Add Subjects"
             android:layout_margin="@dimen/margin"/>
 
         <Button

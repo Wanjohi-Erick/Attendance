@@ -1,8 +1,9 @@
 package com.example.basic;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -12,6 +13,7 @@ import com.google.android.material.tabs.TabLayout;
 
 public class TakeAttendance extends AppCompatActivity {
     TextView titleView;
+    ImageButton backBtn;
     String title, unit_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,11 @@ public class TakeAttendance extends AppCompatActivity {
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
         titleView = findViewById(R.id.title);
+        backBtn = findViewById(R.id.back_arrow);
+        backBtn.setOnClickListener(v -> {
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+        });
         getBundle();
     }
 
