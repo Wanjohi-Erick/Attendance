@@ -17,14 +17,16 @@ import com.example.basic.room.AttendanceModel;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHolder> {
-    private Context context;
+    private final Context context;
     private List<AttendanceModel> attendanceList;
-    List<Date> listWithoutDuplicates = new ArrayList<>();
+    List<String> listWithoutDuplicates = new ArrayList<>();
 
     public HistoryAdapter(Context context) {
         this.context = context;
@@ -43,11 +45,13 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
         return new MyViewHolder(view);
     }
 
-    public List<Date> dates() {
+    public List<String> dates() {
         for (int i = 0; i < attendanceList.size(); i++) {
-            Date date = new Date(attendanceList.get(i).date);
+            //Date date = new Date(attendanceList.get(i).date);
+            String date = attendanceList.get(i).date;
             if (!(listWithoutDuplicates.contains(date))) {
                 listWithoutDuplicates.add(date);
+                //Toast.makeText(context, date, Toast.LENGTH_SHORT).show();
             }
         }
         return listWithoutDuplicates;
@@ -55,16 +59,17 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull MyViewHolder holder, int position) {
-        holder.dateView.setText(String.valueOf(dates().get(position)));
+        holder.dateView.setText(dates().get(position));
         holder.dateView.setOnClickListener(v -> {
             Intent intent = new Intent(context.getApplicationContext(), DayHistory.class);
-            intent.putExtra("Date", attendanceList.get(position).date);
+            intent.putExtra("Date", dates().get(position));
             holder.itemView.getContext().startActivity(intent);
         });
     }
 
     @Override
     public int getItemCount() {
+        //Toast.makeText(context, "Length: " + listWithoutDuplicates.size(), Toast.LENGTH_SHORT).show();
         return dates().size();
     }
 

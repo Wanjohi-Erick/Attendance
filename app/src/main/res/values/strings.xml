@@ -14,4 +14,5 @@
     <string name="cancel">Cancel</string>
     <string name="submit">Submit</string>
     <string name="go_back_to_parent_activity">Go back to parent activity</string>
+    <string name="create_account">Don\'t have an account? Create one here.</string>
 </resources>

@@ -20,6 +20,7 @@ import com.example.basic.room.AttendanceModel;
 import com.squareup.timessquare.CalendarPickerView;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -40,12 +41,16 @@ public class AttendanceFragment extends Fragment {
         takeAttendance = view.findViewById(R.id.take_attendance);
         calendarView = view.findViewById(R.id.calendar);
         Bundle bundle = requireActivity().getIntent().getExtras();
-        title = bundle.getString("Title");
+        title = bundle.getString("title");
         //unit_name = bundle.getString("Unit Name");
         today = new Date();
         Calendar nextYear = Calendar.getInstance();
         nextYear.add(Calendar.YEAR, 1);
-        loadDates(this.getContext());
+        try {
+            loadDates();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         if (attendanceDates.size() == 0) {
             calendarView.init(today, nextYear.getTime()).withSelectedDate(today);
             selectedDate = DateFormat.getDateInstance().format(today);
@@ -67,17 +72,18 @@ public class AttendanceFragment extends Fragment {
         takeAttendance.setOnClickListener(v -> {
             Intent intent = new Intent(this.getActivity(), RecordAttendance.class);
             intent.putExtra("Date", selectedDate);
-            intent.putExtra("Title", title);
+            intent.putExtra("title", title);
             startActivityForResult(intent, 100);
         });
         return view;
     }
 
-    private void loadDates(Context context) {
+    private void loadDates() throws ParseException {
         AttendanceDatabase attendanceDatabase = AttendanceDatabase.getAttendanceDatabase(this.getContext());
         attendance = attendanceDatabase.attendanceDao().getAllAttendance(title);
         for (int position = 0; position < attendance.size(); position++) {
-            Date newDate = new Date(attendance.get(position).date);
+            //Date newDate = new Date(attendance.get(position).date);
+            Date newDate = DateFormat.getInstance().parse(attendance.get(position).date);
             attendanceDates.add(newDate);
         }
     }

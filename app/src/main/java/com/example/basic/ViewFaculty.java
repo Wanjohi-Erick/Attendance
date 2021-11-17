@@ -1,5 +1,6 @@
 package com.example.basic;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +25,9 @@ public class ViewFaculty extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_faculty);
+        ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setTitle("View Faculty");
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         viewFacultyRecycler = findViewById(R.id.view_faculty);
         viewFacultyRecycler.setHasFixedSize(true);
@@ -33,6 +37,7 @@ public class ViewFaculty extends AppCompatActivity {
         FacultyDatabase facultyDatabase = FacultyDatabase.getAllFaculty(this);
         facultyList = facultyDatabase.facultyDao().getAllFaculty();
         facultyListAdapter.setFacultyList(facultyList);
+        viewFacultyRecycler.setAdapter(facultyListAdapter);
         //Toast.makeText(this, "length: " + facultyList.size(), Toast.LENGTH_SHORT).show();
     }
 }

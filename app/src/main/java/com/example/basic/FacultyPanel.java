@@ -26,5 +26,6 @@ public class FacultyPanel extends AppCompatActivity {
         viewAttendanceBtn.setOnClickListener(v -> startActivity(new Intent(this, ViewAttendance.class)));
         addFacultyBtn.setOnClickListener(v -> startActivity(new Intent(this, AddFaculty.class)));
         viewFacultyBtn.setOnClickListener(v -> startActivity(new Intent(this, ViewFaculty.class)));
+        logoutBtn.setOnClickListener(v -> startActivity(new Intent(this, Login.class)));
     }
 }

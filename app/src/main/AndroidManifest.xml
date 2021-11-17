@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DayHistory" />
+        <activity android:name=".DayHistory" android:parentActivityName=".TakeAttendance" />
         <activity android:name=".RecordAttendance" />
         <activity android:name=".room.addNewStudent" android:parentActivityName=".FacultyPanel"/>
         <activity

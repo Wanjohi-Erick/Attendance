@@ -3,80 +3,98 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
     tools:context=".Login">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login"
-        android:textSize="@dimen/title_size"
-        android:fontFamily="cursive"
-        android:textStyle="bold"
-        android:layout_margin="@dimen/margin"/>
-
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Select Category"
-        android:textSize="@dimen/text_size"
-        android:layout_marginTop="@dimen/margin"
-        android:layout_marginStart="@dimen/margin"/>
+        android:layout_height="match_parent">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/login_category"
-        android:text="Faculty"
-        android:textSize="@dimen/text_size"
-        android:layout_margin="@dimen/margin"
-        android:autofillHints=""
-        android:inputType="textCapWords" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login"
+                android:textSize="@dimen/title_size"
+                android:fontFamily="cursive"
+                android:textStyle="bold"
+                android:layout_margin="@dimen/margin"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Username"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_size"
-        android:layout_marginTop="@dimen/margin"
-        android:layout_marginStart="@dimen/margin"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Category"
+                android:textSize="@dimen/text_size"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginStart="@dimen/margin"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/username"
-        android:hint="Username"
-        android:textSize="@dimen/text_size"
-        android:layout_margin="@dimen/margin"
-        android:autofillHints=""
-        android:inputType="textCapWords" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/login_category"
+                android:text="Faculty"
+                android:textSize="@dimen/text_size"
+                android:layout_margin="@dimen/margin"
+                android:autofillHints=""
+                android:inputType="textCapWords" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Password"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_size"
-        android:layout_marginTop="@dimen/margin"
-        android:layout_marginStart="@dimen/margin"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Username"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginStart="@dimen/margin"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/password"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:textSize="@dimen/text_size"
-        android:layout_margin="@dimen/margin"
-        android:autofillHints="" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/username"
+                android:hint="Username"
+                android:textSize="@dimen/text_size"
+                android:layout_margin="@dimen/margin"
+                android:autofillHints=""
+                android:inputType="textCapWords" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/login"
-        android:text="@string/login"
-        android:layout_margin="@dimen/margin"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size"
+                android:layout_marginTop="@dimen/margin"
+                android:layout_marginStart="@dimen/margin"/>
 
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/password"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textSize="@dimen/text_size"
+                android:layout_margin="@dimen/margin"
+                android:autofillHints="" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/login"
+                android:text="@string/login"
+                android:layout_margin="@dimen/margin"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/register"
+                android:gravity="center_horizontal"
+                android:onClick="register"
+                android:textColor="@color/design_default_color_primary"
+                android:text="@string/create_account"
+                android:layout_margin="@dimen/margin"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

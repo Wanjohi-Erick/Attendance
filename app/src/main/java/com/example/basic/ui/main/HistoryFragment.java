@@ -1,9 +1,11 @@
 package com.example.basic.ui.main;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -23,6 +25,7 @@ public class HistoryFragment extends Fragment {
     HistoryAdapter historyAdapter;
     List<AttendanceModel> attendanceList;
     String title;
+    private static final String TAG = "HistoryFragment";
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_history, container, false);
@@ -31,11 +34,12 @@ public class HistoryFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(historyAdapter);
         Bundle bundle = requireActivity().getIntent().getExtras();
-        title = bundle.getString("Title");
+        title = bundle.getString("title");
 
         loadHistory();
+        Log.d(TAG, "onCreateView: size: " + attendanceList.size());
+        //Toast.makeText(getContext(), "size: " + attendanceList.size(), Toast.LENGTH_SHORT).show();
 
         return view;
     }
@@ -44,6 +48,6 @@ public class HistoryFragment extends Fragment {
         AttendanceDatabase attendanceDatabase = AttendanceDatabase.getAttendanceDatabase(this.getContext());
         attendanceList = attendanceDatabase.attendanceDao().getAllAttendance(title);
         historyAdapter.setAttendanceList(attendanceList);
-
+        recyclerView.setAdapter(historyAdapter);
     }
 }

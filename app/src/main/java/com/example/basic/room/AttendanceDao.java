@@ -27,4 +27,7 @@ public interface AttendanceDao {
 
     @Query("SELECT * FROM attendance WHERE date = :date")
     List<AttendanceModel> select(String date);
+
+    @Query("SELECT * FROM attendance WHERE unit_name = :unit_name AND date = :date")
+    List<AttendanceModel> getFilteredList(String unit_name, String date);
 }

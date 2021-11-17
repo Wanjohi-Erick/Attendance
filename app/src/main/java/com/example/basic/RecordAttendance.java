@@ -33,7 +33,7 @@ public class RecordAttendance extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_record_attendance);
         Bundle bundle = getIntent().getExtras();
         date = new Date(bundle.getString("Date"));
-        unit_name = bundle.getString("Title");
+        unit_name = bundle.getString("title");
 
         recyclerView = findViewById(R.id.take_attendance_recycler);
         saveAttendance = findViewById(R.id.save_attendance_btn);

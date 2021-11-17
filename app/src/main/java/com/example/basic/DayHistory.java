@@ -16,6 +16,7 @@ import com.example.basic.room.AttendanceModel;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class DayHistory extends AppCompatActivity {
     private RecyclerView dayHistoryRecycler;
@@ -30,6 +31,7 @@ public class DayHistory extends AppCompatActivity {
 
         dayHistoryRecycler = findViewById(R.id.day_history_recycler);
         dateView = findViewById(R.id.date_view);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         dayHistoryAdapter = new DayHistoryAdapter(this);
 
         dayHistoryRecycler.setHasFixedSize(true);
@@ -42,11 +44,11 @@ public class DayHistory extends AppCompatActivity {
     }
 
     private void loadList(Context context, Bundle bundle) {
-        Date date = new Date(bundle.getString("Date"));
-        dateView.setText(date.toString());
+        String date = bundle.getString("Date");
+        dateView.setText(date);
         //Toast.makeText(context, "date: " + date.toString(), Toast.LENGTH_SHORT).show();
         AttendanceDatabase attendanceDatabase = AttendanceDatabase.getAttendanceDatabase(context);
-        attendanceList = attendanceDatabase.attendanceDao().select(date.toString());
+        attendanceList = attendanceDatabase.attendanceDao().select(date);
         dayHistoryAdapter.setAttendanceList(attendanceList);
     }
 }
